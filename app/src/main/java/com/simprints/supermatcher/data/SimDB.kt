@@ -22,3 +22,20 @@ class SimDB {
 
 @Parcelize
 data class Candidate(val id: Int, val name: String, val surname: String) : Parcelable
+
+fun Candidate.getScore(): Int{
+    // join first and last name
+    val fullName = (this.name + this.surname).replace(" ", "").lowercase()
+    var score = 0
+    fullName.forEach { currentChar ->
+        // only update score if char is letter
+        if(Character.isLetter(currentChar)){
+            // use Character Arithmetic to get the numerical value of the character
+            // the ASCII Value of 'a' is 97, 'b' is 98 etc.
+            // e.g. char = 'a' score would be 'a' - 'a' (97-97) which is 0
+            // e.g. char = 'b' score would be 'b' - 'a' (98-97) which is 1
+            score += currentChar -'a' + 1
+        }
+    }
+    return score
+}

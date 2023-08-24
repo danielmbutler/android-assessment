@@ -1,6 +1,8 @@
 package com.simprints.supermatcher.matcher
 
 import com.simprints.supermatcher.data.Candidate
+import com.simprints.supermatcher.data.getScore
+import kotlin.math.abs
 
 class SimMatcherImpl : SimMatcher {
 
@@ -22,6 +24,7 @@ class SimMatcherImpl : SimMatcher {
      * - Write tests
      */
     override fun compareCandidates(param1: Candidate, param2: Candidate): Int {
-        return (0..1000).random()
+        // use abs to always get the absolute difference i.e. a positive number
+        return abs(param1.getScore() - param2.getScore())
     }
 }

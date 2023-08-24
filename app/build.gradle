@@ -30,6 +30,12 @@ android {
         jvmTarget = '17'
     }
 }
+task wrapper(type: Wrapper){
+    gradleVersion = '7.2'
+}
+task prepareKotlinBuildScriptModel {
+
+}
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
